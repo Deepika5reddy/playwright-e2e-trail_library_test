@@ -7,7 +7,7 @@ const radiusValues = [50, 100, 150, 6000];
 const resultSummary: string[] = [];
 
 
-test.describe.only('Trial Search API - ZIP and Radius Combinations', () => {
+test.describe('Trial Search API - ZIP and Radius Combinations', () => {
   zipCodes.forEach((zip) => {
     radiusValues.forEach((radius) => {
       test(` Validate response for ZIP: ${zip} & Radius: ${radius}`, async ({ request }) => {
@@ -22,9 +22,16 @@ test.describe.only('Trial Search API - ZIP and Radius Combinations', () => {
 
         const data = await response.json();
         expect(Array.isArray(data)).toBe(true);
+        const sponsoredTrialIds = data
+          .map((trial: any) => trial.sponsored_trial_nct_id)
+          .filter((id: string | undefined) => !!id);
+
+        console.log(`Sponsored Trial IDs for ZIP ${zip}, Radius ${radius}: ${sponsoredTrialIds.join(', ')}`);
+        console.log(`ZIP: ${zip}, Radius: ${radius} => Trials Found: ${data.length}`);
 
         console.log(` ZIP: ${zip}, Radius: ${radius} => Trials Found: ${data.length}`);
         const summary = ` ZIP: ${zip}, Radius: ${radius} => Trials Found: ${data.length}`;
+        console.log("trila identifier" +data.sponsored_trial_nct_id);
         console.log(summary);
         resultSummary.push(summary);
         

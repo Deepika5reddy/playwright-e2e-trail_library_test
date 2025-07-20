@@ -1,12 +1,13 @@
-// utilities/custom.fixtures.ts
 import { test as base, BrowserContext, Page, expect } from '@playwright/test';
 import { HomePage } from '../page-object/home.page';
+import { SponsorTrialOpportunityPage } from '../page-object/sponsorTrialOpportunity.page';
 import ENV from './env';
 
 type Fixtures = {
   context: BrowserContext;
   page: Page;
   homePage: HomePage;
+  sponsorTrialPage: SponsorTrialOpportunityPage;
 };
 
 export const test = base.extend<Fixtures>({
@@ -18,7 +19,7 @@ export const test = base.extend<Fixtures>({
 
   page: async ({ context }, use) => {
     const page = await context.newPage();
-    await page.goto(ENV.URL); // ✅ Navigate only once here
+   await page.goto(ENV.URL); // ✅ Navigate only once here
     await use(page);
     await page.close();
   },
@@ -26,6 +27,11 @@ export const test = base.extend<Fixtures>({
   homePage: async ({ page }, use) => {
     const homePage = new HomePage(page);
     await use(homePage);
+  },
+
+  sponsorTrialPage: async ({ page }, use) => {
+    const sponsorTrialPage = new SponsorTrialOpportunityPage(page);
+    await use(sponsorTrialPage);
   },
 });
 

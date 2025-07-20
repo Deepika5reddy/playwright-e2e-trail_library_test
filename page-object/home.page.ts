@@ -22,10 +22,7 @@ export class HomePage extends AbstractPage {
     this.continueBtn = page.getByRole("button", { name: "Continue" });
     this.radiusDropdown = page.getByRole("combobox", { name: "Search radius" });
   }
-  async navigateToUrl() {
-    await this.page.goto(ENV.URL);
-  }
-
+   
   async validateFooter() {
     const count = await this.footerTextLinks.count();
     console.log(`Found ${count} footer links`);
@@ -68,9 +65,9 @@ export class HomePage extends AbstractPage {
   }
 
   async navigateToJoinTrial() {
-    await this.dismissPopupIfPresent();
     await this.footerTextLinks.first().scrollIntoViewIfNeeded();
     await expect(this.joinTrialLink).toBeVisible();
+    await this.dismissPopupIfPresent(); 
     await this.joinTrialLink.click();
     await this.page.waitForURL(/.*opportunities\/search.*/);
   }
@@ -95,6 +92,9 @@ export class HomePage extends AbstractPage {
 
     expect(actualOptions).toEqual(expectedOptions);
   }
+
+  
+  
 
 
 }
