@@ -65,8 +65,8 @@ export class HomePage extends AbstractPage {
   }
 
   async navigateToJoinTrial() {
-    await this.footerTextLinks.first().scrollIntoViewIfNeeded();
     await expect(this.joinTrialLink).toBeVisible();
+    await this.footerTextLinks.first().scrollIntoViewIfNeeded();
     await this.dismissPopupIfPresent(); 
     await this.joinTrialLink.click();
     await this.page.waitForURL(/.*opportunities\/search.*/);
