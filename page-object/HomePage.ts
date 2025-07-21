@@ -1,9 +1,9 @@
 import { Page, Locator, expect } from "@playwright/test";
-import { AbstractPage } from "./AbstractPage";
+import { BasePage } from "./BasePage";
 import ENV from "../ultilities/env";
 import { expectedFooterLinks } from "../ultilities/footer.data";
 
-export class HomePage extends AbstractPage {
+export class HomePage extends BasePage {
   readonly footerTextLinks: Locator;
   readonly joinTrialLink: Locator;
   readonly zipInput: Locator;

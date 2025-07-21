@@ -1,7 +1,7 @@
 import { Locator, Page, expect } from "@playwright/test";
-import { AbstractPage } from "./AbstractPage";
+import { BasePage } from "./BasePage";
 
-export class SponsorTrialOpportunityPage extends AbstractPage {
+export class SponsorTrialOpportunityPage extends BasePage {
   readonly zipInput: Locator;
   readonly continueBtn: Locator;
   readonly radiusDropdown: Locator;

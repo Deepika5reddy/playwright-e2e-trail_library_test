@@ -1,6 +1,6 @@
 import { test as base, BrowserContext, Page, expect } from '@playwright/test';
-import { HomePage } from '../page-object/home.page';
-import { SponsorTrialOpportunityPage } from '../page-object/sponsorTrialOpportunity.page';
+import { HomePage } from '../page-object/HomePage';
+import { SponsorTrialOpportunityPage } from '../page-object/SponsorTrialOpportunityPage';
 import ENV from './env';
 
 type Fixtures = {

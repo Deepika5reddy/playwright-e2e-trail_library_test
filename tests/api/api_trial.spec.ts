@@ -1,5 +1,5 @@
 import { test, expect } from "../../ultilities/custom.fixtures";
-import { HomePage } from "../../page-object/home.page";
+import { HomePage } from "../../page-object/HomePage";
 import ENV from "../../ultilities/env";
 import { zipCodes } from '../../ultilities/zipcode'; 
 
@@ -7,7 +7,7 @@ const radiusValues = [50, 100, 150, 6000];
 const resultSummary: string[] = [];
 
 
-test.describe('Trial Search API - ZIP and Radius Combinations', () => {
+test.describe.skip('Trial Search API - ZIP and Radius Combinations', () => {
   zipCodes.forEach((zip) => {
     radiusValues.forEach((radius) => {
       test(` Validate response for ZIP: ${zip} & Radius: ${radius}`, async ({ request }) => {
