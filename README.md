@@ -19,4 +19,4 @@ npm init playwright@latest
 ________________________________________
 Run your first test
 
-npm run test
+npx playwright test
